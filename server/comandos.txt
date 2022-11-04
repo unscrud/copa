@@ -5,4 +5,5 @@ npm i fastify
 npm i tsx -D
 npm i prisma -D
 npm i @prisma/client
+npx prisma init --datasource-provider SQLite
 npm run dev
