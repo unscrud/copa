@@ -3,3 +3,4 @@ npm i typescript -D
 npx tsc --init
 npm i fastify
 npm i tsx -D
+npm run dev
