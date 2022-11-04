@@ -3,4 +3,6 @@ npm i typescript -D
 npx tsc --init
 npm i fastify
 npm i tsx -D
+npm i prisma -D
+npm i @prisma/client
 npm run dev
