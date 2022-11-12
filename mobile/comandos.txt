@@ -1,2 +1,3 @@
 npx create-expo-app mobile
+npm i native-base 
 npx expo start
