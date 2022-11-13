@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
 import { NativeBaseProvider, VStack, Text } from "native-base";
+import { THEME } from './src/styles/theme';
 
 export default function App() {
   return (
-    <NativeBaseProvider>
+    <NativeBaseProvider theme={THEME}>
       <VStack 
         flex={1}
-        bgColor='green.800'
+        bgColor='gray.900'
         alignItems="center"
         justifyContent='center'
       >
