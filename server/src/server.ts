@@ -24,7 +24,7 @@ async function bootstrap() {
   //http://localhost:3333/pools
   fastify.post('/pools', async (request,reply) => {
     const {title} = request.body
-    return {title}
+    return reply.status(201).send({title})
   })
 
   await fastify.listen({
