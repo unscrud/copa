@@ -2,6 +2,7 @@ import Fastify from 'fastify'
 import cors from "@fastify/cors";
 import {z} from 'zod'
 import {PrismaClient} from '@prisma/client'
+import ShortUniqueId from 'short-unique-id'
 
 const prisma = new PrismaClient({
   log: ['query'],
@@ -27,6 +28,8 @@ async function bootstrap() {
     const createPoolBody = z.object({
       title: z.string(),
     })
+
+    const generate = new ShortUniqueId({length: 6})
 
     const {title} = createPoolBody.parse(request.body)
     return reply.status(201).send({title})
