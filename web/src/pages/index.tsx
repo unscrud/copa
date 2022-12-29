@@ -19,6 +19,16 @@ export default function Home(/*props: HomeProps*/) {
 
         <div>
           <Image src={usersAvatarExampleImg} />
+
+          <strong>
+            <span>+12.592</span> pessoas já estão usando
+          </strong>
+
+          <form>
+            <input type="text" required placeholder='Qual nome do seu bolão?' />
+            <button type='submit'>Criar meu bolão</button>
+          </form>
+
           
         </div>
       </main>
