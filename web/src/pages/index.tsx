@@ -23,14 +23,15 @@ export default function Home(/*props: HomeProps*/) {
           <strong>
             <span>+12.592</span> pessoas já estão usando
           </strong>
-
-          <form>
-            <input type="text" required placeholder='Qual nome do seu bolão?' />
-            <button type='submit'>Criar meu bolão</button>
-          </form>
-
-          
         </div>
+
+        <form>
+          <input type="text" required placeholder='Qual nome do seu bolão?' />
+          <button type='submit'>Criar meu bolão</button>
+        </form>
+
+        <p>Após criar seu bolão, você receberá um código único que poderá usar para convidar outras pessoas 🚀</p>
+      
       </main>
       
       <Image src={appPreviewImg} alt="Dois celulares exibindo uma prévia da aplicação." />
