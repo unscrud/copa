@@ -4,6 +4,7 @@ import logoImg from '../assets/logo.svg'
 import usersAvatarExampleImg from '../assets/users-avatar-example.png'
 import iconCheckImage from '../assets/icon-check.png'
 import { api } from '../lib/axios'
+import { FormEvent } from 'react'
 
 interface HomeProps {
   poolCount: number;
@@ -12,6 +13,13 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  
+  
+  function createPool(event: FormEvent) {
+    event.preventDefault()
+    
+
+  }
 
   return (
     <div className='max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center gap-28'>
@@ -30,9 +38,9 @@ export default function Home(props: HomeProps) {
           </strong>
         </div>
  
-        <form className='mt-10 flex gap-2'>
+        <form onSubmit={createPool} className='mt-10 flex gap-2'>
           <input 
-            className='flex-1 px-6 py-4 rounded bg-gray-800 border-gray-600 text-sm' 
+            className='flex-1 px-6 py-4 rounded bg-gray-800 border-gray-600 text-sm text-gray-100' 
             type="text" 
             required 
             placeholder='Qual nome do seu bolão?' 
