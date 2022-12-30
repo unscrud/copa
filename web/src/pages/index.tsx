@@ -1,17 +1,16 @@
-// interface HomeProps {
-//   count: number;
-// }
-
 import Image from 'next/image'
 import appPreviewImg from '../assets/app-copa-preview.png'
 import logoImg from '../assets/logo.svg'
 import usersAvatarExampleImg from '../assets/users-avatar-example.png'
 import iconCheckImage from '../assets/icon-check.png'
 
-export default function Home(/*props: HomeProps*/) {
+interface HomeProps {
+  poolCount: number;
+}
+
+export default function Home(props: HomeProps) {
 
   return (
-    // <h1 className="text-violet-500 font-bold text-4xl">Contagem: {props.count}</h1>
     <div className='max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center gap-28'>
       <main>
         <Image src={logoImg} alt="NLW Copa" />
@@ -52,7 +51,7 @@ export default function Home(/*props: HomeProps*/) {
           <div className='flex items-center gap-6'>
             <Image src={iconCheckImage} alt=""/>
             <div className='flex flex-col'>
-              <span className='font-bold text-2xl'>+2.034</span>
+              <span className='font-bold text-2xl'>+{props.poolCount}</span>
               <span>Bolões criados</span>
             </div>
           </div>
@@ -74,8 +73,8 @@ export default function Home(/*props: HomeProps*/) {
   )
 }
 
-// export const getServerSideProps = async () => {
-//   const response = await fetch('http://localhost:3333/pools/count')
-//   const data = await response.json()
-//   return {props:{count: data.count}}
-// }
+export const getServerSideProps = async () => {
+  const response = await fetch('http://localhost:3333/pools/count')
+  const data = await response.json()
+  return {props:{poolCount: data.count}}
+}
