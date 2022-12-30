@@ -4,7 +4,7 @@ import logoImg from '../assets/logo.svg'
 import usersAvatarExampleImg from '../assets/users-avatar-example.png'
 import iconCheckImage from '../assets/icon-check.png'
 import { api } from '../lib/axios'
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 
 interface HomeProps {
   poolCount: number;
@@ -13,12 +13,26 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  const [poolTitle,setPoolTitle] = useState('')
+
   
-  
-  function createPool(event: FormEvent) {
+  async function createPool(event: FormEvent) {
     event.preventDefault()
     
+    try {
+      const response = await api.post('/pools',{
+        title: poolTitle
+      })
 
+      const {code} = response.data
+      await navigator.clipboard.writeText(code)
+
+      alert('Bolão criado com sucesso, o código foi copiado para a área de transferência!')
+      setPoolTitle('')
+    } catch (error) {
+      console.log(error)
+      alert('Falha ao criar o bolão!')
+    }
   }
 
   return (
@@ -43,7 +57,9 @@ export default function Home(props: HomeProps) {
             className='flex-1 px-6 py-4 rounded bg-gray-800 border-gray-600 text-sm text-gray-100' 
             type="text" 
             required 
-            placeholder='Qual nome do seu bolão?' 
+            placeholder='Qual nome do seu bolão?'
+            onChange={event => setPoolTitle(event.target.value)} 
+            value={poolTitle}
           />
 
           <button 
