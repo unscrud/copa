@@ -8,6 +8,7 @@ import { api } from '../lib/axios'
 interface HomeProps {
   poolCount: number;
   guessCount: number;
+  userCount: number;
 }
 
 export default function Home(props: HomeProps) {
@@ -25,7 +26,7 @@ export default function Home(props: HomeProps) {
           <Image src={usersAvatarExampleImg} alt="" />
 
           <strong className='text-gray-100 text-xl'>
-            <span className='text-ignite-500'>+12.592</span> pessoas já estão usando
+            <span className='text-ignite-500'>+{props.userCount}</span> pessoas já estão usando
           </strong>
         </div>
  
@@ -76,14 +77,20 @@ export default function Home(props: HomeProps) {
 }
 
 export const getServerSideProps = async () => {
-  const [poolCountResponse,guessCountResponse] = await Promise.all([
+  const [
+    poolCountResponse,
+    guessCountResponse,
+    userCountResponse
+  ] = await Promise.all([
     api.get('pools/count'),
-    api.get('guesses/count')
+    api.get('guesses/count'),
+    api.get('users/count')
   ])
 
   return {props: {
       poolCount: poolCountResponse.data.count,
-      guessCount: guessCountResponse.data.count
+      guessCount: guessCountResponse.data.count,
+      userCount: userCountResponse.data.count
     }
   }
 }
