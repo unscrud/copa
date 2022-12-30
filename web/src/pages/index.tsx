@@ -44,7 +44,9 @@ export default function Home(/*props: HomeProps*/) {
           </button>
         </form>
 
-        <p>Após criar seu bolão, você receberá um código único que poderá usar para convidar outras pessoas 🚀</p>
+        <p className='text-gray-300 mt-4 text-sm'>
+          Após criar seu bolão, você receberá um código único que poderá usar para convidar outras pessoas 🚀
+        </p>
       
         <div>
           <div>
