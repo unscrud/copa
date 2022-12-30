@@ -12,7 +12,7 @@ export default function Home(/*props: HomeProps*/) {
 
   return (
     // <h1 className="text-violet-500 font-bold text-4xl">Contagem: {props.count}</h1>
-    <div className='max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center'>
+    <div className='max-w-[1124px] h-screen mx-auto grid grid-cols-2 items-center gap-28'>
       <main>
         <Image src={logoImg} alt="NLW Copa" />
 
