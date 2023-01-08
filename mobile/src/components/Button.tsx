@@ -4,9 +4,9 @@ interface Props extends IButtonProps {
   title: string
 }
 
-export function Button ({title}: Props) {
+export function Button ({title, ...rest}: Props) {
   return(
-    <ButtonNativeBase>
+    <ButtonNativeBase {...rest}>
       <Text>
         {title}
       </Text>
