@@ -8,7 +8,7 @@ export function SignIn (){
       flex={1}
       bgColor='gray.900'
     >
-      <Logo />  
+      <Logo width={212} height={40} />  
     </Center>
   )
 }
