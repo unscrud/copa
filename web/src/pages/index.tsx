@@ -100,7 +100,7 @@ export default function Home(props: HomeProps) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps = async () => { // pesquisar getStaticProps continuar no video 3
   const [
     poolCountResponse,
     guessCountResponse,
