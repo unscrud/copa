@@ -20,7 +20,8 @@ export function SignIn (){
             color="white"
             size="md"
           />
-        } 
+        }
+        type="SECONDARY"
       />
     </Center>
   )
