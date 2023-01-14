@@ -23,6 +23,7 @@ export function SignIn (){
           />
         }
         type="SECONDARY"
+        mt={12}
       />
 
       <Text color="white" textAlign="center" mt={4}>
