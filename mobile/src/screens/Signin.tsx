@@ -24,8 +24,9 @@ export function SignIn (){
         type="SECONDARY"
       />
 
-      <Text color="white">
-        Não utilizamos nenhuma informação além do seu e-mail para criação de sua conta.
+      <Text color="white" textAlign="center" mt={4}>
+        Não utilizamos nenhuma informação além {"\n"}
+        do seu e-mail para criação de sua conta.
       </Text>
     </Center>
   )
