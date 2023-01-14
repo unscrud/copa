@@ -1,4 +1,4 @@
-import { Center, Icon } from "native-base";
+import { Center, Icon, Text } from "native-base";
 import { Fontisto } from "@expo/vector-icons";
 
 import Logo from "../assets/logo.svg";
@@ -23,6 +23,10 @@ export function SignIn (){
         }
         type="SECONDARY"
       />
+
+      <Text color="white">
+        Não utilizamos nenhuma informação além do seu e-mail para criação de sua conta.
+      </Text>
     </Center>
   )
 }
