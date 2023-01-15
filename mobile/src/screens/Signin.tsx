@@ -9,8 +9,6 @@ import { useAuth } from "../hooks/useAuth";
 export function SignIn (){
   const {signIn,user} = useAuth();
 
-  console.log('DADOS DO USUÁRIO =>', user)
-
   return (
     <Center 
       flex={1}
