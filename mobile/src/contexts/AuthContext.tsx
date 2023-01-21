@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
 import * as AuthSession from "expo-auth-session";
 import * as Google from 'expo-auth-session/providers/google'
 import * as WebBrowser from 'expo-web-browser'
@@ -42,6 +42,12 @@ export function AuthContextProvider({children}: AuthProviderProps){
       setIsUserLoading(false)
     }
   }
+
+  useEffect(()=>{
+    if(response?.type === 'success' && response.authentication?.accessToken){
+
+    }
+  },[response])
 
   return (
     <AuthContext.Provider value={{
