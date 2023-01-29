@@ -14,4 +14,5 @@ npx prisma studio
 npx prisma db seed //após criar seed em package.json
 npm i zod //validação
 npm i short-unique-id //geração de codigos unicos para pool
+npm i @fastify/jwt
 npm run dev
