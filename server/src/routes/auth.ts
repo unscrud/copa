@@ -1,3 +1,4 @@
+import { prisma } from "../lib/prisma"
 import { FastifyInstance } from "fastify"
 import { z } from "zod"
 
@@ -27,6 +28,12 @@ export async function authRoutes(fastify: FastifyInstance){
     })
     
     const userInfo = userInfoSchema.parse(userData)
+
+    let user = await prisma.user.findUnique({
+      where: {
+        googleId: userInfo.id
+      }
+    })
 
     return {userInfo}
   })
