@@ -35,6 +35,17 @@ export async function authRoutes(fastify: FastifyInstance){
       }
     })
 
+    if (!user) {
+      user = await prisma.user.create({
+        data: {
+          googleId: userInfo.id,
+          name: userInfo.name,
+          email: userInfo.email,
+          avatarURL: userInfo.picture
+        }
+      })
+    }
+
     return {userInfo}
   })
 }
