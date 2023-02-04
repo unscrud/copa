@@ -49,8 +49,8 @@ export async function poolRoutes(fastify: FastifyInstance){
     return reply.status(201).send({code})
   })
 
-  //http://localhost:3333/pools/idQueRepresentaOBolao/join
-  fastify.post('/pools/:id/join', {
+  //http://localhost:3333/pools/join
+  fastify.post('/pools/join', {
     onRequest:[authenticate]
   },async (request,reply) => {
     const joinPoolBody = z.object({
@@ -143,5 +143,47 @@ export async function poolRoutes(fastify: FastifyInstance){
       }
     })
     return {pools}
+  })
+
+  //http://localhost:3333/pools/:id
+  fastify.get('/pools/:id', {
+    onRequest: [authenticate]
+  },async (request) => {
+    const getPoolParams = z.object({
+      id: z.string()
+    })
+
+    const {id} = getPoolParams.parse(request.params)
+
+    const pool = await prisma.pool.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        _count: {
+          select:{
+            participants: true
+          }
+        },
+        participants: {
+          select: {
+            id: true,
+            user: {
+              select: {
+                avatarURL: true
+              }
+            }
+          },
+          take: 4
+        },
+        owner: {
+          select: {
+            name: true,
+            id: true
+          }
+        }
+      }
+    })
+    return {pool}
   })
 }
