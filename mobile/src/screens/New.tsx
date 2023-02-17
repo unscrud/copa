@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Alert } from "react-native";
 import { Heading, VStack, Text } from "native-base";
 
 import Logo from "../assets/logo.svg"
@@ -11,6 +12,9 @@ export function New() {
   const [title, setTitle] = useState('')
   
   async function handlePoolCreate() {
+    if(!title){
+      Alert.alert('Opa!', 'Informe o título!')
+    }
   }
 
   return (
