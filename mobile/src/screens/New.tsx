@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Heading, VStack, Text } from "native-base";
 
 import Logo from "../assets/logo.svg"
@@ -7,7 +8,9 @@ import { Header } from "../components/Header";
 import { Input } from "../components/Input";
 
 export function New() {
-  return (
+  const [title, setTitle] = useState('')
+  
+    return (
     <VStack flex={1} bgColor='gray.900'>
       <Header title="Criar novo bolão"/>
       
@@ -19,7 +22,12 @@ export function New() {
            e compartilhe entre amigos!
         </Heading>
 
-        <Input mb={2} placeholder='Qual nome do seu bolão?' />
+        <Input 
+          mb={2} 
+          placeholder='Qual nome do seu bolão?'
+          onChangeText={setTitle}
+          value={title}   
+        />
 
         <Button title="CRIAR MEU BOLÃO"/>
 
