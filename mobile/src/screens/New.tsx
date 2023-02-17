@@ -6,7 +6,7 @@ import Logo from "../assets/logo.svg"
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
-import { isLoading } from "expo-font";
+import { api } from "../services/api";
 
 export function New() {
   const [title, setTitle] = useState('')
@@ -28,6 +28,15 @@ export function New() {
     try {
       setIsLoading(true)
       
+      await api.post('/pools', {title})
+
+      toast.show({
+        title: 'Bolão criado com sucesso!',
+        placement: 'top',
+        bgColor: 'green.500'
+      })
+
+      setTitle('')
     } catch (error) {
       console.log(error)
 
