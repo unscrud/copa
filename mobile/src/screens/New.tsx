@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { Alert } from "react-native";
-import { Heading, VStack, Text } from "native-base";
+import { Heading, VStack, Text, useToast } from "native-base";
 
 import Logo from "../assets/logo.svg"
 
@@ -11,9 +10,15 @@ import { Input } from "../components/Input";
 export function New() {
   const [title, setTitle] = useState('')
   
+  const toast = useToast()
+
   async function handlePoolCreate() {
     if(!title){
-      Alert.alert('Opa!', 'Informe o título!')
+      return toast.show({
+        title: 'Informe um nome para o seu bolão',
+        placement: 'top',
+        bgColor: 'red.500'
+      })
     }
   }
 
