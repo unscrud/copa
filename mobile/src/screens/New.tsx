@@ -13,7 +13,8 @@ export function New() {
   const toast = useToast()
 
   async function handlePoolCreate() {
-    if(!title){
+    if(!title.trim()){
+      setTitle('')
       return toast.show({
         title: 'Informe um nome para o seu bolão',
         placement: 'top',
