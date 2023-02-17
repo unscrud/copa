@@ -6,10 +6,13 @@ import Logo from "../assets/logo.svg"
 import { Button } from "../components/Button";
 import { Header } from "../components/Header";
 import { Input } from "../components/Input";
+import { isLoading } from "expo-font";
 
 export function New() {
   const [title, setTitle] = useState('')
   
+  const [isLoading, setIsLoading] = useState(false)
+
   const toast = useToast()
 
   async function handlePoolCreate() {
@@ -20,6 +23,21 @@ export function New() {
         placement: 'top',
         bgColor: 'red.500'
       })
+    }
+
+    try {
+      setIsLoading(true)
+      
+    } catch (error) {
+      console.log(error)
+
+      toast.show({
+        title: 'Não foi possível criar o bolão',
+        placement: 'top',
+        bgColor: 'red.500'
+      })
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -45,6 +63,7 @@ export function New() {
         <Button 
           title="CRIAR MEU BOLÃO"
           onPress={handlePoolCreate}
+          isLoading={isLoading}
         />
 
         <Text color="gray.200" fontSize="sm" textAlign="center" px={10} mt={4}>
