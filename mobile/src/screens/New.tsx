@@ -10,7 +10,10 @@ import { Input } from "../components/Input";
 export function New() {
   const [title, setTitle] = useState('')
   
-    return (
+  async function handlePoolCreate() {
+  }
+
+  return (
     <VStack flex={1} bgColor='gray.900'>
       <Header title="Criar novo bolão"/>
       
@@ -29,7 +32,10 @@ export function New() {
           value={title}   
         />
 
-        <Button title="CRIAR MEU BOLÃO"/>
+        <Button 
+          title="CRIAR MEU BOLÃO"
+          onPress={handlePoolCreate}
+        />
 
         <Text color="gray.200" fontSize="sm" textAlign="center" px={10} mt={4}>
           Após criar seu bolão, você receberá um código único
