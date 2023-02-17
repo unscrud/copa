@@ -24,6 +24,7 @@ interface AuthProviderProps {
 export const AuthContext = createContext({} as AuthContextDataProps)
 
 export function AuthContextProvider({children}: AuthProviderProps){
+  const [user, setUser] = useState<UserProps>({} as UserProps)
   const [isUserLoading, setIsUserLoading] = useState(false)
 
   const [request, response, promptAsync] = Google.useAuthRequest({
@@ -50,7 +51,7 @@ export function AuthContextProvider({children}: AuthProviderProps){
       const tokenResponse = await api.post('/users', {access_token})
       api.defaults.headers.common['Authorization'] = `Bearer ${tokenResponse.data.token}`
       const userInfoResponse = await api.get('/me')
-      console.log(userInfoResponse.data)
+      setUser(userInfoResponse.data.user)
     } catch (error) {
       console.log(error) 
       throw error
